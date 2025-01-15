@@ -5,6 +5,9 @@ import Photo from "../components/photo";
 export default function Dynamique({ images }) {
   const id = useParams().id;
   const selecImage = images.find((image) => image.id === parseInt(id));
+  if (!selecImage) {
+    return <p>Aucune image trouvée avec l’ID {id}</p>;
+  }
 
   console.log(id);
   console.log(selecImage);
