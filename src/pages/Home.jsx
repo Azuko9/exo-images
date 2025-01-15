@@ -11,13 +11,15 @@ export default function Home({ images }) {
     ...new Set(images?.map((image) => image.category || "Autre")),
   ];
 
-  // Trier les catégories en fonction de `isAscending`
-  const sortedCategories = [...categories].sort((a, b) => {
-    return isAscending ? a.localeCompare(b) : b.localeCompare(a);
+  // Trier les images en fonction de `isAscending`
+  const sortedImages = [...images].sort((a, b) => {
+    return isAscending
+      ? a.title.localeCompare(b.title)
+      : b.title.localeCompare(a.title);
   });
 
   // Filtrer les images par mot-clé et catégorie
-  const filteredImages = images?.filter((image) => {
+  const filteredImages = sortedImages.filter((image) => {
     const matchesSearch = image.title
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
@@ -40,7 +42,7 @@ export default function Home({ images }) {
         />
       </label>
 
-      {/* Bouton pour trier les catégories */}
+      {/* Bouton pour trier les images  */}
       <div className="flex justify-center mb-5">
         <button
           onClick={() => setIsAscending(!isAscending)} // Inverse l'ordre de tri
@@ -48,13 +50,13 @@ export default function Home({ images }) {
             isAscending ? "bg-gray-300 text-black" : "bg-[#93b8b2] text-white"
           }`}
         >
-          Trier catégories ({isAscending ? "A-Z" : "Z-A"})
+          Trié de {isAscending ? "A à Z" : "Z à A"}
         </button>
       </div>
 
       {/* Boutons de catégories */}
       <div className="flex justify-center flex-wrap mb-5 gap-2">
-        {sortedCategories.map((category) => (
+        {categories.map((category) => (
           <button
             key={category}
             onClick={() => setSelectedCategory(category)} // Met à jour la catégorie sélectionnée
