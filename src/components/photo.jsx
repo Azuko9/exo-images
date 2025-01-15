@@ -21,8 +21,8 @@ export default function Photo({
     <div
       className={`${
         isExpanded
-          ? "w-[430px] h-[320px] justify-end hover:brightness-75"
-          : "w-[215px] h-[160px] justify-center brightness-75 hover:brightness-100"
+          ? "w-[360px] h-[240px] justify-end hover:brightness-75"
+          : "w-[180px] h-[120px] justify-center brightness-75 hover:brightness-100"
       } flex flex-col rounded-lg backdrop-brightness-50 cursor-pointer transition-all duration-300`}
       style={{
         backgroundImage: `url(${url})`,
