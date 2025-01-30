@@ -10,7 +10,7 @@ export default function App() {
   // Fonction asynchrone pour récupérer les photos depuis l'API
   const fetchPhotos = async () => {
     try {
-      const response = await fetch("https://osmjom.fr/photos.json");
+      const response = await fetch("./data/photos.json");
       if (!response.ok) {
         throw new Error("Erreur lors du chargement des photos");
       }
